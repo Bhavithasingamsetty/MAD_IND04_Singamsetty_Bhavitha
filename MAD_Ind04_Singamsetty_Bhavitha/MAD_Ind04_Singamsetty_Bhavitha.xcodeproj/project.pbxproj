@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		869A288C2BD465CA0097A2E3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A288B2BD465CA0097A2E3 /* TableViewController.swift */; };
 		86F346F82BD4560300499018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F346F72BD4560300499018 /* AppDelegate.swift */; };
 		86F346FA2BD4560300499018 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F346F92BD4560300499018 /* SceneDelegate.swift */; };
 		86F346FC2BD4560300499018 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F346FB2BD4560300499018 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		869A288B2BD465CA0097A2E3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		86F346F42BD4560300499018 /* MAD_Ind04_Singamsetty_Bhavitha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAD_Ind04_Singamsetty_Bhavitha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F346F72BD4560300499018 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86F346F92BD4560300499018 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				86F346F72BD4560300499018 /* AppDelegate.swift */,
 				86F346F92BD4560300499018 /* SceneDelegate.swift */,
 				86F346FB2BD4560300499018 /* ViewController.swift */,
+				869A288B2BD465CA0097A2E3 /* TableViewController.swift */,
 				86F346FD2BD4560300499018 /* Main.storyboard */,
 				86F347002BD4560400499018 /* Assets.xcassets */,
 				86F347022BD4560400499018 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 				86F346FC2BD4560300499018 /* ViewController.swift in Sources */,
 				86F346F82BD4560300499018 /* AppDelegate.swift in Sources */,
 				86F346FA2BD4560300499018 /* SceneDelegate.swift in Sources */,
+				869A288C2BD465CA0097A2E3 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,26 +14,42 @@ struct State {
 }
 
 // Define the Table View Controller class
-class StatesTableViewController: UITableViewController {
-
+class TableViewController: UITableViewController {
+    
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     // Array to hold the states data
     var states = [State]()
-
+    // Activity Indicator property
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Initialize the activity indicator
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        
+        // Start animating the activity indicator and fetch states
+        activityIndicator.startAnimating()
         fetchStates()
     }
 
     // Fetch and parse JSON data from the server
     func fetchStates() {
-        guard let url = URL(string: "https://cs.okstate.edu/~bsingam/Madstates.php")
-            else {
+        guard let url = URL(string: "https://cs.okstate.edu/~bsingam/Madstates.php") else {
             print("Invalid URL")
+            activityIndicator.stopAnimating() // Stop animating if the URL is invalid
             return
         }
 
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self else { return }
+            // Ensure we stop the activity indicator and handle the data on the main thread
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+            }
+
             if let error = error {
                 print("Error fetching data: \(error)")
                 return
@@ -46,14 +62,14 @@ class StatesTableViewController: UITableViewController {
 
             do {
                 if let json = try JSONSerialization.jsonObject(with: data) as? [[String: String]] {
-                    self.states = json.compactMap { dict in
+                    self?.states = json.compactMap { dict in
                         guard let name = dict["name"], let nickname = dict["nickname"] else {
                             return nil
                         }
                         return State(name: name, nickname: nickname)
                     }
                     DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                        self?.tableView.reloadData()
                     }
                 }
             } catch {
