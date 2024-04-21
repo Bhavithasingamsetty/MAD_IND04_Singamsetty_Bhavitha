@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86EE1BD22BD5D645001F9328 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EE1BD12BD5D645001F9328 /* Model.swift */; };
+		86EE1BD42BD5D672001F9328 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EE1BD32BD5D672001F9328 /* View.swift */; };
 		86F346F82BD4560300499018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F346F72BD4560300499018 /* AppDelegate.swift */; };
 		86F346FA2BD4560300499018 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F346F92BD4560300499018 /* SceneDelegate.swift */; };
 		86F346FC2BD4560300499018 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F346FB2BD4560300499018 /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86EE1BD12BD5D645001F9328 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		86EE1BD32BD5D672001F9328 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		86F346F42BD4560300499018 /* MAD_Ind04_Singamsetty_Bhavitha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAD_Ind04_Singamsetty_Bhavitha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F346F72BD4560300499018 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86F346F92BD4560300499018 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 		86F346F62BD4560300499018 /* MAD_Ind04_Singamsetty_Bhavitha */ = {
 			isa = PBXGroup;
 			children = (
+				86EE1BD12BD5D645001F9328 /* Model.swift */,
+				86EE1BD32BD5D672001F9328 /* View.swift */,
 				86F346F72BD4560300499018 /* AppDelegate.swift */,
 				86F346F92BD4560300499018 /* SceneDelegate.swift */,
 				86F346FB2BD4560300499018 /* ViewController.swift */,
@@ -260,7 +266,9 @@
 			files = (
 				86F346FC2BD4560300499018 /* ViewController.swift in Sources */,
 				86F346F82BD4560300499018 /* AppDelegate.swift in Sources */,
+				86EE1BD42BD5D672001F9328 /* View.swift in Sources */,
 				86F346FA2BD4560300499018 /* SceneDelegate.swift in Sources */,
+				86EE1BD22BD5D645001F9328 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,68 +7,57 @@
 
 import UIKit
 
-struct State: Codable {
-    let name: String
-    let nickname: String
-}
-
-class ViewController: UITableViewController {
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+class ViewController: UIViewController {
     
-    var states = [State]() // Array to store state data
+    let parser = Parser()
+    var state = [StateDetail]()
+    
+    
+    @IBOutlet var TableView: UITableView!
+    var spinner: UIActivityIndicatorView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.hidesWhenStopped = true
-        fetchStates()
-    }
-    
-    // Fetch states from the server
-    func fetchStates() {
-        DispatchQueue.main.async {
-            self.activityIndicator.startAnimating()
-        }
+        //Structure to fetch details from server.
+        // Initialize the spinner
+                spinner = UIActivityIndicatorView(style: .large)
+                spinner.center = self.view.center // Position the spinner in the center of ViewController
+                spinner.hidesWhenStopped = true
+                self.view.addSubview(spinner) // Add the spinner to the view
+                
+                // Start the spinner
+                spinner.startAnimating()
         
-        guard let url = URL(string: "https://cs.okstate.edu/~bsingam/Madstates.php") else { return }
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        parser.parse {
+            data in
+            self.state = data
             DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating()
-            }
-            
-            guard let self = self, let data = data, error == nil else {
-                print("Error fetching states: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-            
-            do {
-                self.states = try JSONDecoder().decode([State].self, from: data)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData() // Reload table data on main thread
-                }
-            } catch let jsonError {
-                print("Failed to decode JSON: \(jsonError)")
+                self.TableView.reloadData()
+                // Stop the spinner once the data is loaded
+                                self.spinner.stopAnimating()
             }
         }
-        
-        task.resume()
-    }
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return states.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StateCell", for: indexPath)
-        let state = states[indexPath.row]
-        cell.textLabel?.text = state.name
-        cell.detailTextLabel?.text = state.nickname
-        return cell
-    }
+        TableView.dataSource = self
+
+        // Do any additional setup after loading the view.
+        }
 }
+
+extension ViewController: UITableViewDataSource {
+    func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int)-> Int {
+        return state.count
+    }
+    //Function to get count of records in the Table.
+    func tableView( _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StateCell", for: indexPath)
+        cell.textLabel?.text = state[indexPath.row].name
+        cell.detailTextLabel?.text = state[indexPath.row].nickname
+
+        return cell
+        }
+    }
+
+

@@ -6,3 +6,12 @@
 //
 
 import Foundation
+struct state: Codable {
+    let Execution_Status: Bool
+    let Fetched_state_details: [StateDetail]
+}
+
+// MARK: - StateDetail
+struct StateDetail: Codable {
+    let name, nickname: String
+}
